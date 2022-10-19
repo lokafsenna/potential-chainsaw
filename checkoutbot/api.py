@@ -51,7 +51,6 @@ def add():
 
         data = {
             "registers" : redge,
-            "Subject" : "Data Structures and Algorithms",
         }
   
         return jsonify(data), 201
@@ -61,12 +60,17 @@ def checkout():
 
 
     if request.method == "POST": 
+        print(request.form)
+        cust = int(request.form.get('customer_id'))
         print("checkout")
-  
-        return jsonify(redge), 201
+        for regi, regItems in redge.items():  
+            if cust in regItems:
+                # regItems.count(cust)
+                redge[regi] = list(filter(lambda x : x != cust, regItems))
+                break   
         
-
-def update_state():
-
-
-    return
+        data = {
+            "registers" : redge,
+        }
+  
+        return jsonify(data), 201
