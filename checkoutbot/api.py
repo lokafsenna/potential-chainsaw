@@ -19,7 +19,9 @@ def state():
     if request.method == "DELETE":
         # delete the state lol haha 
         print("delete something")
-        redge: RegisterType = {x:[1] for x in range(25)}
+        print(len(redge[0]))
+        for i in range(25):
+            redge[i] = [1]
         return "Success", 201
 
 @app.route("/add", methods=["POST"])
@@ -41,12 +43,13 @@ def add():
         if not new_cust:
             redge[place_at].append(cust)
         if new_cust: # optimize here by selecting the emptiest redgester/ 
-            redge[random.randint(0,24)].append(cust)
+            # redge[random.randint(0,24)].append(cust)
+            redge[emptiest_register()].append(cust)
             
 
         # TODO
         # select the emptiest register with min and a loop and maybe other cool things
-
+        
 
 
         data = {
@@ -60,7 +63,6 @@ def checkout():
 
 
     if request.method == "POST": 
-        print(request.form)
         cust = int(request.form.get('customer_id'))
         print("checkout")
         for regi, regItems in redge.items():  
@@ -74,3 +76,18 @@ def checkout():
         }
   
         return jsonify(data), 201
+
+def emptiest_register():
+    
+    emptiest_index = 0
+    num_items = len(redge[0])
+
+    for regi, regItems in redge.items():
+        if len(regItems) < num_items:
+            emptiest_index = regi
+            num_items = len(regItems)
+
+
+
+    return emptiest_index
+
