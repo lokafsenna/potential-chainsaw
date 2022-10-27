@@ -43,3 +43,10 @@ Additionally, you must handle the scenario where a shopper checks out and their 
 - Successful implementation
 - Performance
 - Distribution of items
+
+
+
+#### Improvements to be made
+ - try optimizing the algorithm by selecting the "most empty register" instead of just "select every register in order from left to right"
+ - complete the checkout functionality
+ - Add tests for new code
