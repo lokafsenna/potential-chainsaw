@@ -1,5 +1,17 @@
 # Cylera Backend Assignment
 
+to start the project
+ - flask requires python three. to switch between py2 and py3, use virtualenv. run these commands:
+
+   - ` virtualenv venv`
+   - ` virtualenv venv -p 3`
+   - ` history |grep source`
+   - ` source myproject/bin/activate`
+   - ` python --version`
+
+ - then run `flask --app api.py run`
+
+
 **NOTE**: Do not fork this project. Instead, download it as a ZIP and create a new public repository.
 
 ## The Situation
